@@ -1,0 +1,18 @@
+libav-tools
+python3 idle3 python3-tk
+python3-pip
+python3-numpy
+python3-pgzero
+python3-serial
+python3-picamera
+python3-bottle
+python3-watchdog
+wiringpi pigpio python3-pigpio raspi-gpio python3-gpiozero python3-rpi.gpio
+python3-spidev
+python3-twython
+python3-smbus
+omxplayer
+rfkill
+git
+raspberrypi-net-mods
+
