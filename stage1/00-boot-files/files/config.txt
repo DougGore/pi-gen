@@ -50,6 +50,10 @@
 # Uncomment this to enable the lirc-rpi module
 #dtoverlay=lirc-rpi
 
+# This overlay supports the USB gadget mode used in Actioncam, do not disable
+# unless you intent to break this mode
+dtoverlay=dwc2
+
 # Additional overlays and parameters are documented /boot/overlays/README
 
 # Enable audio (loads snd_bcm2835)

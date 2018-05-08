@@ -1,0 +1,11 @@
+[Unit]
+Description=Actioncam autostart service
+
+[Service]
+ExecStart=/usr/local/bin/actioncam
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
+Alias=actioncam.service
+
