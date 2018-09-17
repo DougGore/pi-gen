@@ -2,7 +2,7 @@
 Description=Actioncam autostart service
 
 [Service]
-ExecStart=/usr/local/bin/actioncam
+ExecStart=/usr/bin/actioncam
 StandardOutput=journal
 
 [Install]
