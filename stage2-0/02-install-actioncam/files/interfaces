@@ -1,0 +1,13 @@
+auto lo
+auto ap0
+iface lo inet loopback
+
+# AP setup (must come before wlan0!)
+allow-hotplug ap0
+iface ap0 inet static
+    address 192.168.8.1
+    netmask 255.255.255.0
+
+# Connect to home wifi network if available (_not_ automatic)
+iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf

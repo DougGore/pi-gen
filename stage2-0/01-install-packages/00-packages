@@ -20,8 +20,12 @@ python3-rpi.gpio
 python3-spidev
 python3-twython
 python3-smbus
+python3-autobahn
 omxplayer
 rfkill
 git
 raspberrypi-net-mods
 python3-actioncam
+rng-tools
+hostapd
+dnsmasq

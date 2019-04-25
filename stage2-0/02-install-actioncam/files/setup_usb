@@ -1,0 +1,45 @@
+#!/bin/bash
+# Actioncam USB gadget mode setup script
+
+# For AP mode load the wlan interface now ap0 has been created
+/sbin/ifup wlan0
+
+# first byte of address must be even
+SERIAL="$(grep Serial /proc/cpuinfo | sed 's/Serial\s*: 0000\(\w*\)/\1/')"
+
+cd /sys/kernel/config/usb_gadget/
+
+# Create actioncam entry
+mkdir -p actioncam
+cd actioncam
+
+# Set up a composite device
+echo 0x1d6b > idVendor  # Linux Foundation
+echo 0x0104 > idProduct # Multifunction Composite Gadget
+echo 0x0100 > bcdDevice # v1.0.0
+echo 0x0200 > bcdUSB    # USB 2.0
+
+echo 0x02 > bDeviceClass
+echo 0x00 > bDeviceSubClass
+
+mkdir -p strings/0x409
+echo $SERIAL         > strings/0x409/serialnumber
+echo "oneninedesign" > strings/0x409/manufacturer
+echo "ActionCAM"     > strings/0x409/product
+
+mkdir -p configs/c.1/strings/0x409
+echo "Multifunction serial" > configs/c.1/strings/0x409/configuration
+
+mkdir -p functions/acm.gs0	   # Serial
+ 
+ln -sf configs/c.1 os_desc
+
+ln -sf functions/acm.gs0 configs/c.1/
+# End functions
+
+echo "0x00" > bDeviceClass
+
+echo "20980000.usb" > UDC
+
+# Start up the serial service
+systemctl enable getty@ttyGS0.service
