@@ -2,6 +2,9 @@
 Description=Actioncam autostart service
 
 [Service]
+User=pi
+Group=pi
+Environment=PYTHONUNBUFFERED=1
 ExecStart=/usr/bin/actioncam
 StandardOutput=journal
 

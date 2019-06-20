@@ -22,6 +22,7 @@ mkdir -m 1777 /share
 chown pi:pi /share
 smbpasswd -n -a pi
 
+systemctl enable hostapd
 systemctl enable actioncam.service
 systemctl enable actioncam_usb.service
 EOF
